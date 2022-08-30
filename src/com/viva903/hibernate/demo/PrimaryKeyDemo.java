@@ -19,9 +19,13 @@ public class PrimaryKeyDemo {
 		try {
 //			create 3 student objects
 			System.out.println("Creating 3 student objects");
-			Student tempStudent1 = new Student("Antony", "Walker", "Antony@viva903.com");
-			Student tempStudent2 = new Student("Dean", "Walker", "dean@viva903.com");
-			Student tempStudent3 = new Student("David", "Walker", "david@viva903.com");
+			String theDateOfBirthStr = "23/05/1999";
+			Student tempStudent1 = new Student("Antony", "Walker", "Antony@viva903.com",
+					DateUtils.parseDate(theDateOfBirthStr));
+			Student tempStudent2 = new Student("Dean", "Walker", "dean@viva903.com",
+					DateUtils.parseDate(theDateOfBirthStr));
+			Student tempStudent3 = new Student("David", "Walker", "david@viva903.com",
+					DateUtils.parseDate(theDateOfBirthStr));
 
 //			start a transaction
 			session.beginTransaction();
@@ -36,6 +40,8 @@ public class PrimaryKeyDemo {
 			session.getTransaction().commit();
 			System.out.println("Done!");
 
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			factory.close();
 		}

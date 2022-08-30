@@ -19,7 +19,8 @@ public class ReadStudentDemo {
 		try {
 //			create a student object
 			System.out.println("Creating new student object");
-			Student tempStudent = new Student("Damien", "Duffy", "damien@viva903.com");
+			String theDateOfBirthStr = "23/05/1999";
+			Student tempStudent = new Student("Damien", "Duffy", "damien@viva903.com", DateUtils.parseDate(theDateOfBirthStr));
 			
 //			start a transaction
 			session.beginTransaction();
@@ -51,6 +52,8 @@ public class ReadStudentDemo {
 			
 			System.out.println("Done!");
 			
+		}  catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			factory.close();
 		}

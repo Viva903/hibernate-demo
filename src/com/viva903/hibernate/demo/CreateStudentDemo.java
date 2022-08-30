@@ -19,19 +19,22 @@ public class CreateStudentDemo {
 		try {
 //			create a student object
 			System.out.println("Creating new student object");
-			Student tempStudent = new Student("Paul", "Walker", "paul@viva903.com");
-			
+			String theDateOfBirthStr = "23/05/1999";
+			Student tempStudent = new Student("Paul", "Walker", "paul@viva903.com", DateUtils.parseDate(theDateOfBirthStr));
+
 //			start a transaction
 			session.beginTransaction();
-			
+
 //			save the student object
 			System.out.println("Saving the student ... ");
 			session.save(tempStudent);
-			
+
 //			commit transaction
 			session.getTransaction().commit();
 			System.out.println("Done!");
-			
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			factory.close();
 		}
